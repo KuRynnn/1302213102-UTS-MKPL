@@ -1,8 +1,6 @@
 package lib;
 
 public class TaxFunction {
-
-	
 	/**
 	 * Fungsi untuk menghitung jumlah pajak penghasilan pegawai yang harus dibayarkan setahun.
 	 * 
@@ -13,17 +11,20 @@ public class TaxFunction {
 	 * Jika pegawai sudah memiliki anak maka penghasilan tidak kena pajaknya ditambah sebesar Rp 4.500.000 per anak sampai anak ketiga.
 	 * 
 	 */
-	
-	
-	public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
-		
+	public static int calculateTax(TaxData data) {
+		int monthlySalary = data.getMonthlySalary();
+        int otherMonthlyIncome = data.getOtherMonthlyIncome();
+        int numberOfMonthWorking = data.getNumberOfMonthWorking();
+        int deductible = data.getDeductible();
+        boolean isMarried = data.isMarried();
+        int numberOfChildren = data.getNumberOfChildren();
 		int tax = 0;
 		
 		if (numberOfMonthWorking > 12) {
 			System.err.println("More than 12 month working per year");
 		}
 		
-		if (numberOfChildren > 3) {
+		if (numberOfChildren  > 3) {
 			numberOfChildren = 3;
 		}
 		
@@ -37,8 +38,6 @@ public class TaxFunction {
 			return 0;
 		}else {
 			return tax;
-		}
-			 
+		} 
 	}
-	
 }
