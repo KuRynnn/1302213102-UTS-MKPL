@@ -19,22 +19,26 @@ public class Employee {
 	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
 	 */
 	public void setMonthlySalary(int grade) {	
-		if (grade == 1) {
-			salary.setMonthlySalary(3000000);
-			if (information.isForeigner()) {
-				salary.setMonthlySalary((int) (3000000 * 1.5));
-			}
-		}else if (grade == 2) {
-			salary.setMonthlySalary(5000000);
-			if (information.isForeigner()) {
-				salary.setMonthlySalary((int) (3000000 * 1.5));
-			}
-		}else if (grade == 3) {
-			salary.setMonthlySalary(7000000);
-			if (information.isForeigner()) {
-				salary.setMonthlySalary((int) (3000000 * 1.5));
-			}
+		int baseSalary = 0;
+		switch (grade) {
+			case 1:
+				baseSalary = 3000000;
+				break;
+			case 2:
+				baseSalary = 5000000;
+				break;
+			case 3:
+				baseSalary = 7000000;
+				break;
+			default:
+				break;
 		}
+
+		if (information.isForeigner()) {
+			baseSalary *= 1.5;
+		}
+		
+		salary.setMonthlySalary(baseSalary);
 	}
 	
 	public void setEmployeeFamily(String spouseName, String spouseIdNumber, List<String> childNames, List<String> childIdNumbers) {
